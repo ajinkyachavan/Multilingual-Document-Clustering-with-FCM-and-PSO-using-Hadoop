@@ -1,0 +1,35 @@
+Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar 
+centroids - [442.2256041346702, 656.7851964960352]
+mem[[0.3786407766990291, 0.6213592233009708], [0.46194824961948255, 0.5380517503805176], [0.4307479224376731, 0.5692520775623269], [0.46902106567534085, 0.5309789343246593], [0.46603260869565216, 0.5339673913043479], [0.2222222222222222, 0.7777777777777779], [0.46603260869565216, 0.5339673913043479], [0.37113402061855666, 0.6288659793814433], [0.42, 0.5800000000000001], [0.24489795918367344, 0.7551020408163265]]
+centroids - [298.42395158875394, 740.8261315074452]
+mem[[0.22420880488552006, 0.7757911951144799], [0.7091180069674763, 0.29088199303252366], [0.3159271312459905, 0.6840728687540095], [0.6319537158638711, 0.3680462841361289], [0.6598778977623708, 0.34012210223762923], [0.32724370039021483, 0.6727562996097851], [0.6598778977623708, 0.34012210223762923], [0.24023583099868684, 0.7597641690013132], [0.3633359589318207, 0.6366640410681793], [0.322674857183364, 0.677325142816636]]
+2 iterations
+[]
+0 news found
+execution time for pathankot without PSO 663
+java.lang.NumberFormatException: For input string: "athanko"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at GUIMain3.main(GUIMain3.java:116)
+	at DocumentCluster.fuzzyCMeansWithoutPSO(DocumentCluster.java:614)
+	at CallPreprocessedTfidfClass.main(CallPreprocessedTfidfClass.java:12)
+-------------------PSO--------------------
+mean 560.7
+centroids - [265.3481685871167, 712.9586372815861]
+mem[[0.1231651665934266, 0.8768348334065734], [0.4227925393493243, 0.5772074606506756], [0.04258582998305992, 0.9574141700169401], [0.7170142805528799, 0.28298571944712014], [0.6126529243960115, 0.3873470756039885], [0.28645735793205607, 0.7135426420679439], [0.609816564522382, 0.390183435477618], [0.21540542592249265, 0.7845945740775073], [0.2897966093507591, 0.7102033906492409], [0.24655559327216633, 0.7534444067278336]]
+1 iterations with PSO
+[]
+0 news found
+execution time for pathankot with PSO371.0
+java.lang.NumberFormatException: For input string: "athanko"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at GUIMain4.main(GUIMain4.java:116)
+	at DocumentCluster.FuzzyCMeansWithPSO(DocumentCluster.java:1030)
+	at DocumentCluster.fuzzyCMeansWithoutPSO(DocumentCluster.java:619)
+	at CallPreprocessedTfidfClass.main(CallPreprocessedTfidfClass.java:12)
+---------------------------------------------------------------------------------
+
+
