@@ -3,15 +3,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LoggerCombinedKeywordsWithPSO {
-	
+	 final String username = System.getProperty("user.name");
+
 	
 	public LoggerCombinedKeywordsWithPSO(){
 	
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/combined_keywords"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/combined_keywords"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/combined_keywords");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/combined_keywords");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -30,14 +31,15 @@ public class LoggerCombinedKeywordsWithPSO {
       PrintWriter out = null;
       
  
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/combined_keywords", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/combined_keywords", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

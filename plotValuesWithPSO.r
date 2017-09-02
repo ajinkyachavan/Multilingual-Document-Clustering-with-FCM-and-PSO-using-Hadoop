@@ -1,6 +1,11 @@
 
+username <- Sys.info()[["user"]]
 
-setwd("/home/deepa/workspace/NewsCluster/")
+
+pathName <- paste(c("/home/",username, "/workspace/NewsCluster/"),collapse="")
+
+
+setwd(pathName)
 
 args <- commandArgs(trailingOnly = TRUE)
 

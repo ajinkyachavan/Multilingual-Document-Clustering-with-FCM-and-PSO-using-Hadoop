@@ -8,17 +8,11 @@ public class LoggerContentWords {
 	
 	public LoggerContentWords(){
 	
-		try{
-		File f = new File("/home/deepa/workspace/NewsCluster/names");
-		f.createNewFile();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/names"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("contentWords.txt"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/names");
+   		 PrintWriter writer1 = new PrintWriter("contentWords.txt");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -44,7 +38,7 @@ public class LoggerContentWords {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/names", true), true);
+		out = new PrintWriter(new FileWriter("contentWords.txt", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

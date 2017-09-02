@@ -3,15 +3,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class LoggerCentroid {
-	
+	 final String username = System.getProperty("user.name");
+
 	
 	public LoggerCentroid(){
 	
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/centroids"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/centroids"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/centroids");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/centroids");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -31,13 +32,14 @@ public class LoggerCentroid {
       
  
       
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/centroids", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/centroids", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -1,7 +1,5 @@
 
 
-setwd("/home/deepa/workspace/NewsCluster/")
-
 args <- commandArgs(trailingOnly = TRUE)
 
 
@@ -9,10 +7,19 @@ args <- commandArgs(trailingOnly = TRUE)
 value <- args[1]
 m <- args[2]
 
+
 #print(paste(c( value," value"), collapse = "_"))
 #print(paste(c(m," number"), collapse = "_"))
 
 
+username <- Sys.info()[["user"]]
+
+
+link <- paste(c("/home/",username, "/workspace/NewsCluster/"),collapse="")
+
+
+print(link)
+setwd(link)
 
 
 plotData <- function(value, j){

@@ -1,17 +1,18 @@
 import java.io.*;
 
 public class LoggerBar {
-	
+	 final String username = System.getProperty("user.name");
+
 	
 	public LoggerBar(){
 		
 		
 	
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/barTime"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/barTime"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/barTime");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/barTime");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -30,13 +31,14 @@ public class LoggerBar {
       
  
       
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/barTime", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/barTime", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

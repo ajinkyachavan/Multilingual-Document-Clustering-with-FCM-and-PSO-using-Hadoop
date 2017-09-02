@@ -2,24 +2,35 @@ import java.io.*;
 
 public class LoggerFinalWithPSO {
 	static String filename = null;
+	String pathName, dataFileName;
+	File dirName;
+	File file;
+	 final String username = System.getProperty("user.name");
 
 	boolean bool = false;
 	public LoggerFinalWithPSO(String myfilename, int docNum){
 		try{
 
+			
+			 dataFileName = "cluster_documents_"+myfilename;
+			//"/home/"+username+"/workspace/NewsCluster/"+
+			 pathName = "/home/"+username+"/workspace/NewsCluster/"+dataFileName;
 			// Create a directory; all non-existent ancestor directories are
 			// automatically created
-			(new File("/home/deepa/workspace/NewsCluster/pso_cluster_documents_"+myfilename)).mkdirs();
-	
-	//System.out.println(docNum+".txt"+" dhfds");		
-		File file = new File("/home/deepa/workspace/NewsCluster/pso_cluster_documents_"+myfilename+"/"+docNum+".txt");
-    	bool = file.createNewFile();
+			
+				dirName = new File(pathName);
+				
+				if(!dirName.exists()) {
+					dirName.mkdir();
+				}
+				
+		 new File(pathName+"/"+docNum+".txt").createNewFile();
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
     	
-    	filename = "/home/deepa/workspace/NewsCluster/pso_cluster_documents_"+myfilename+"/"+docNum+".txt";
+    	filename = pathName+"/"+docNum+".txt";
    // 	System.out.println(filename);
     try{
     

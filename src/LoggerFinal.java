@@ -2,6 +2,10 @@ import java.io.*;
 
 public class LoggerFinal {
 	static String filename = null;
+	String pathName, dataFileName;
+	File dirName;
+	File file;
+	 final String username = System.getProperty("user.name");
 
 	boolean bool = false;
 	public LoggerFinal(String myfilename, int docNum){
@@ -9,17 +13,24 @@ public class LoggerFinal {
 		//	System.out.println("dcoNum "+docNum);
 			// Create a directory; all non-existent ancestor directories are
 			// automatically created
-			(new File("/home/deepa/workspace/NewsCluster/cluster_documents_"+myfilename)).mkdirs();
+			
+			 dataFileName = "cluster_documents_"+myfilename;
+			 // "/home/"+username+"/workspace/NewsCluster/"+
+			 pathName ="/home/"+username+"/workspace/NewsCluster/"+dataFileName;
+			
+			dirName = new File(pathName);
+			
+			if(!dirName.exists()) {
+				dirName.mkdir();
+			}
 	
-//	System.out.println(docNum+" dhfds");		
-		File file = new File("/home/deepa/workspace/NewsCluster/cluster_documents_"+myfilename+"/"+docNum+".txt");
-    	bool = file.createNewFile();
+		new File(pathName+"/"+docNum+".txt").createNewFile();
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
     	
-    	filename = "/home/deepa/workspace/NewsCluster/cluster_documents_"+myfilename+"/"+docNum+".txt";
+    	filename = pathName+"/"+docNum+".txt";
    // 	System.out.println(filename);
     try{
     

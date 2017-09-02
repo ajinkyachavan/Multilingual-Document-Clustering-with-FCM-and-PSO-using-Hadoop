@@ -4,19 +4,30 @@ import java.io.*;
 public class Main {
 	
 	public static void main(String args[]){
+		
+		final String username = System.getProperty("user.name");
+		
 		Preprocessing process = new Preprocessing();
+		
+		System.out.println("Preprocessing done");
+		
+		new File("cleanData").mkdir();
+		
 		
 	//	process.initPreprocess();
 		process.preprocess();
 		
 	//	runFromTerminal(" chmod a+x  initHadoop.sh");
 	//	runFromTerminal(" ./initHadoop.sh");
-	
-		System.setProperty("user.dir", "/home/deepa/workspace/NewsCluster/");
 		
-		runFromTerminal(" chmod a+x /home/deepa/workspace/NewsCluster/initHadoop.sh");
-		runFromTerminal("   ./initHadoop.sh");
-	
+		/*
+		System.setProperty("user.dir", "/home/"+System.getProperty("user.name")+"/workspace/NewsCluster/");
+		
+		//System.out.println(System.getProperty("user.dir"));
+		
+		runFromTerminal("chmod a+x  /home/"+System.getProperty("user.name")+"/workspace/initHadoop.sh");
+		runFromTerminal("./initHadoop.sh");
+		*/
 		
 		process.getTFIDF();
 		DocumentCluster document = new DocumentCluster();
@@ -31,8 +42,8 @@ public class Main {
 	document.fuzzyCMeansWithoutPSO(input);
 	
 
-//    Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotBar.r /home/deepa/workspace/NewsCluster/barTime "+input );
- //   Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotiter.r /home/deepa/workspace/NewsCluster/iter "+input);
+    Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotBar.r /home/"+username+"/workspace/NewsCluster/barTime "+input );
+    Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotiter.r /home/"+username+"/workspace/NewsCluster/iter "+input);
 
 	
 //	String arr[] = {document.documentNumber.size()+"", document.documentNumber.toString(), document.fileNames.length+""};
@@ -45,8 +56,7 @@ public class Main {
 		//document.getExecAndIterTime();
 		//document.fuzzyCMeans();
 		
-	runFromTerminal("Rscript plotBar.r barTime names");
-    runFromTerminal("Rscript plotiter.r iter names");
+		
 	}
 	
 	
@@ -55,8 +65,10 @@ public class Main {
 		try {
 			  String command =callCommand;
 
-		       Process proc = Runtime.getRuntime().exec(command);
-
+			  Runtime rt  = Runtime.getRuntime();
+			  Process proc = rt.exec(command);
+			  
+		       
 		       // Read the output
 
 		       BufferedReader reader =  
@@ -66,9 +78,9 @@ public class Main {
 		       while((line = reader.readLine()) != null) {
 		           System.out.print(line + "\n");
 		       }
-
+				
 		       proc.waitFor();   
-
+			   
 		   
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

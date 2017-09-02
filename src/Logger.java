@@ -4,21 +4,18 @@ public class Logger {
 	static int x = 0;
 	static String filename = null;
 
-	
+	 final String username = System.getProperty("user.name");
+
 	public Logger() throws Exception{
 		x++;
 		
 		
-		System.setProperty("user.dir","/home/deepa/workspace/NewsCluster");
-		System.out.println(x);
-    	filename = "/home/deepa/workspace/NewsCluster/cleanData/cleanData"+x+".txt";
-		File file = new File(filename);
+    	filename = "/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+x+".txt";
+		File file = new File("/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+x+".txt");
     	
-		file.createNewFile();
+		boolean bool = file.createNewFile();
 		
-		
-	//System.out.println(file.exists());
-	System.out.println(filename);
+    	//System.out.println(filename);
     try{
     
         BufferedReader  bf  = new BufferedReader(new FileReader(filename));

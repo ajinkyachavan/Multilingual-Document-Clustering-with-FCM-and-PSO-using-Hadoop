@@ -4,14 +4,15 @@ import java.io.PrintWriter;
 
 public class LoggerCentroidWithPSO {
 	
-	
+	 final String username = System.getProperty("user.name");
+
 	public LoggerCentroidWithPSO(){
 	
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/centroidsPSO"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/centroidsPSO"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/centroidsPSO");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/centroidsPSO");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -31,13 +32,14 @@ public class LoggerCentroidWithPSO {
       
  
       
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/centroidsPSO", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/centroidsPSO", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

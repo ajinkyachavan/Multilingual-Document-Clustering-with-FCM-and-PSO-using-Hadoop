@@ -10,8 +10,14 @@ iter <- args[5]
 word <- args[4]
 
 
-link <- paste(c("/home/deepa/workspace/NewsCluster/cluster_plots", word) , collapse="_")
+username <- Sys.info()[["user"]]
 
+
+link <- paste(c("/home/",username, "/workspace/NewsCluster/"),collapse="")
+
+
+#link <- paste(c("/home/deepa/workspace/NewsCluster/cluster_plots", word) , collapse="_")
+print(link)
 
 setwd(link)
 

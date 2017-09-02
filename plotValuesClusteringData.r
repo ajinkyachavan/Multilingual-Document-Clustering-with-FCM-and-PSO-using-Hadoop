@@ -8,9 +8,14 @@ m <- args[2]
 word <- args[3]
 
 
-link <- paste(c("/home/deepa/workspace/NewsCluster/cluster_plots", word) , collapse="_")
+username <- Sys.info()[["user"]]
 
 
+link <- paste(c("/home/",username, "/workspace/NewsCluster/"),collapse="")
+
+#link <- paste(c(pathName, word) , collapse="_")
+
+print(link)
 setwd(link)
 
 

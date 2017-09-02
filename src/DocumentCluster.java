@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -7,6 +8,7 @@ import java.util.regex.Pattern;
 
  class DocumentCluster{
 	
+	 final String username = System.getProperty("user.name");
 	 
 	 int iter=0;
 	 double execTime=0.0;
@@ -31,7 +33,7 @@ import java.util.regex.Pattern;
 	LoggerCombinedKeywords logc = new LoggerCombinedKeywords();
 	LoggerIter itr = new LoggerIter();
     LoggerBar bar = new LoggerBar();
-	LoggerContentWords names = new LoggerContentWords();
+	//LoggerContentWords names = new LoggerContentWords();
 
 	ArrayList<String> nonUniqueWords = new  ArrayList<>();
 	ArrayList<String> uniqueWords = new  ArrayList<>();
@@ -128,7 +130,7 @@ public DocumentCluster(){
 			try{
 				documentNumber = new ArrayList<>();
 				String mydata =null, mystring = "", curr="";
-				in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/cleanData/cleanData"+d+".txt"));
+				in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+d+".txt"));
 				
 				while((mydata = in.readLine()) != null){
 					mystring += mydata+" \n ";
@@ -187,7 +189,7 @@ public DocumentCluster(){
 
 			try{
 			
-			Scanner s = new Scanner(new File("/home/deepa/workspace/NewsCluster/tfidfArray.txt"));
+			Scanner s = new Scanner(new File("/home/"+username+"/workspace/NewsCluster/tfidfArray.txt"));
 			
 
 				//	ArrayList<String> list = new ArrayList<String>();
@@ -278,9 +280,9 @@ public DocumentCluster(){
 				values.add(value);
 				valuesWithLineNumbers.add((n+1)+"-"+value);
 			}
-			Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotValues.r /home/deepa/workspace/NewsCluster/all_keywords 1");
+			Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotValues.r all_keywords 1");
 
-		Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotValues.r /home/deepa/workspace/NewsCluster/combined_keywords 2");
+		Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotValues.r combined_keywords 2");
 
 	//		System.out.println("size - "+values.size());
 	//		System.out.println("values"+values);
@@ -344,27 +346,27 @@ for(String s1:s.split(" ")){
 	if(Collections.frequency(wordsOnly, s1) > 1){
 		search_keyword.add(s1.trim());
 String myname = s1.trim()+"_with_PSO";
-names.log(s1.trim()+"\n");
+//names.log(s1.trim()+"\n");
 System.out.println(myname);
-		names.log(myname+"\n");
+//		names.log(myname+"\n");
 		
-		File f3 = new File("/home/deepa/workspace/NewsCluster/cluster_documents_"+s1.trim());
+		File f3 = new File("/home/"+username+"/workspace/NewsCluster/cluster_documents_"+s1.trim());
 		f3.mkdir();
 		
 		
-		 f3 = new File("/home/deepa/workspace/NewsCluster/cluster_plots_"+s1.trim());
+		 f3 = new File("/home/"+username+"/workspace/NewsCluster/cluster_plots_"+s1.trim());
 		f3.mkdir();
 		
 		
-		 f3 = new File("/home/deepa/workspace/NewsCluster/pso_cluster_documents_"+s1.trim());
+		 f3 = new File("/home/"+username+"/workspace/NewsCluster/pso_cluster_documents_"+s1.trim());
 		f3.mkdir();
 		
 		
-		 f3 = new File("/home/deepa/workspace/NewsCluster/pso_cluster_plots_"+s1.trim());
+		 f3 = new File("/home/"+username+"/workspace/NewsCluster/pso_cluster_plots_"+s1.trim());
 		f3.mkdir();
 		
 		
-		show("names");
+		//show("names");
 }
 	else{
 		System.out.println(s1+" occurs only once. SO rejecting"); 
@@ -445,7 +447,7 @@ System.out.println(myname);
 			e.printStackTrace();
 		}*/
 		
-		Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotValuesClusteringData.r /home/deepa/workspace/NewsCluster/valuesForThisWord 3 "+search_keyword_1 );
+		Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotValuesClusteringData.r /home/"+username+"/workspace/NewsCluster/valuesForThisWord 3 "+search_keyword_1 );
 		
 			centroids.add(1000.0);
 			centroids.add(900.0);
@@ -517,7 +519,7 @@ System.out.println(myname);
 				LoggerCentroid.log(centroids.get(i5) +"\n");
 			}
 
-			Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/centroidsPlot.r /home/deepa/workspace/NewsCluster/valuesForThisWord /home/deepa/workspace/NewsCluster/centroids 4 "+search_keyword_1+" iter-"+iter);
+			Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/centroidsPlot.r /home/"+username+"/workspace/NewsCluster/valuesForThisWord /home/"+username+"/workspace/NewsCluster/centroids 4 "+search_keyword_1+" iter-"+iter);
 		
 		
 			System.out.println("centroids - "+centroids);
@@ -623,7 +625,7 @@ System.out.println(myname);
 				
 			
 
-	Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotValuesClusteringData.r /home/deepa/workspace/NewsCluster/clusteredValues  5 "+search_keyword_1);
+	Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotValuesClusteringData.r /home/"+username+"/workspace/NewsCluster/clusteredValues  5 "+search_keyword_1);
 
 		for(int u=0;u<documentNumber.size();u++){
 			
@@ -633,11 +635,11 @@ System.out.println(myname);
 				BufferedReader in = null;
 				
 			if(documentNumber.get(u)+1 < 43)
-				 in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/Original_Dataset/English"+(documentNumber.get(u)+1)+".txt"));
+				 in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/Original_Dataset/English"+(documentNumber.get(u)+1)+".txt"));
 			else if(documentNumber.get(u)+1 > 97)
-				in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/Original_Dataset/Marati"+(documentNumber.get(u)+1)+".txt"));
+				in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/Original_Dataset/marathi"+(documentNumber.get(u)+1)+"ToEnglish.txt"));
 			else
-				in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/Original_Dataset/Hindi"+(documentNumber.get(u)+1)+".txt"));
+				in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/Original_Dataset/Hindi"+(documentNumber.get(u)+1)+"ToEnglish.txt"));
 			
 			String data = null;
 			mystring ="";
@@ -731,7 +733,7 @@ System.out.println(myname);
 			
 			try{
 		//		System.out.println(num+" num");
-				readNews = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/cleanData/cleanData"+num+".txt"));
+				readNews = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+num+".txt"));
 				
 				String data = null, mystring = "";
 				
@@ -971,7 +973,7 @@ den = new ArrayList<>();
 	show("centroidsPSO");
 	show("valuesForThisWordPSO");
 	
-	Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/centroidPlotPSO.r /home/deepa/workspace/NewsCluster/valuesForThisWordPSO /home/deepa/workspace/NewsCluster/centroidsPSO  7 "+search_keyword_1+" iter-"+iter);
+	Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/centroidPlotPSO.r /home/"+username+"/workspace/NewsCluster/valuesForThisWordPSO /home/"+username+"/workspace/NewsCluster/centroidsPSO  7 "+search_keyword_1+" iter-"+iter);
 
 	
 	 System.out.println("centroids - "+centroids);
@@ -1066,7 +1068,7 @@ den = new ArrayList<>();
 		}
 		
 
-	Main.runFromTerminal("Rscript /home/deepa/workspace/NewsCluster/plotValuesClusteringDataPSO.r /home/deepa/workspace/NewsCluster/clusteredValuesPSO  8 "+search_keyword_1);
+	Main.runFromTerminal("Rscript /home/"+username+"/workspace/NewsCluster/plotValuesClusteringDataPSO.r /home/"+username+"/workspace/NewsCluster/clusteredValuesPSO  8 "+search_keyword_1);
 
 //			for(int h=0;h<news.size();h++)
 //		System.out.println(news.get(h));
@@ -1077,7 +1079,7 @@ den = new ArrayList<>();
 		String mystring = null;
 		
 		try{
-		BufferedReader in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/cleanData/cleanData"+(documentNumber.get(u)+1)+".txt"));
+		BufferedReader in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+(documentNumber.get(u)+1)+".txt"));
 	
 		String data = null;
 		mystring ="";
@@ -1177,7 +1179,7 @@ den = new ArrayList<>();
 	try{
 		
 		
-		in = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/"+s));
+		in = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/"+s));
 		
 		String mydata = null;
 		

@@ -1,36 +1,54 @@
 #!/bin/bash
-cd /home/deepa/hadoop
-bin/hadoop dfsadmin -safemode leave
 #fuser -k -n tcp 50070
 #fuser -k -n tcp 50090
 #fuser -k -n tcp 50075
 #fuser -k -n tcp 8062
 #fuser -k -n tcp 8061
 
+cd /usr/local/hadoop
+hdfs dfsadmin -safemode leave
 
-rm -rf hadoop_data/*
+rm -rf /app/hadoop/tmp
+rm -rf /usr/local/hadoop_store/*
 rm -rf logs
-/home/deepa/hadoop/sbin/stop-all.sh
+/usr/local/hadoop/sbin/stop-all.sh
 
-bin/hdfs namenode -format
-
-/home/deepa/hadoop/sbin/start-all.sh
+echo stopped
 
 
+bin/hdfs namenode -format 
+
+echo formatted
+
+/usr/local/hadoop/sbin/start-all.sh
+
+echo started
 
  
 
-bin/hdfs dfs -rm -r /home/deepa/hadoop/input
-bin/hdfs dfs -rm -r /home/deepa/hadoop/output
-bin/hdfs dfs -rm -r /home/deepa/hadoop/user/deepa
+hdfs dfs -rm -r /usr/local/hadoop/input
+hdfs dfs -rm -r /usr/local/hadoop/output
+hdfs dfs -rm -r /usr/local/hadoop/user/ajinkya
 
+echo jps
 jps
-bin/hadoop dfsadmin -safemode leave
-cd /home/deepa/hadoop
-bin/hdfs dfs -mkdir -p /home/deepa/hadoop/input
-bin/hdfs dfs -copyFromLocal /home/deepa/workspace/NewsCluster/Stem/* /home/deepa/hadoop/input/
-bin/hadoop jar /home/deepa/workspace/NewsCluster/tfidf.jar /home/deepa/hadoop/input /home/deepa/hadoop/output
+
+
+bin/hdfs dfsadmin -safemode leave
+
+echo left
+
+
+
+bin/hdfs dfs -mkdir -p /usr/local/hadoop/input
+
+echo input created
+
+bin/hdfs dfs -copyFromLocal ~/workspace/NewsCluster/cleanData/* /usr/local/hadoop/input/
+
+
+bin/hadoop jar ~/Documents/tfidf.jar /usr/local/hadoop/input /usr/local/hadoop/output
 truncate -s 0 ~/workspace/NewsCluster/finalOutput.txt
-bin/hdfs dfs -cat /home/deepa/hadoop/output/part-r-00000 >> ~/workspace/NewsCluster/finalOutput.txt
-#bin/hdfs dfs -cat /home/deepa/hadoop/output/part-r-00000
+bin/hdfs dfs -cat /usr/local/hadoop/output/part-r-00000 >> ~/workspace/NewsCluster/finalOutput.txt
+#bin/hdfs dfs -cat /usr/local/hadoop/output/part-r-00000
 

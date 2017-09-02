@@ -4,14 +4,15 @@ import java.io.PrintWriter;
 
 public class LoggerKeywordsPSO {
 	
-	
+	 final String username = System.getProperty("user.name");
+
 	public LoggerKeywordsPSO(){
 	
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/valuesForThisWordPSO"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/valuesForThisWordPSO"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/valuesForThisWordPSO");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/valuesForThisWordPSO");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -31,13 +32,14 @@ public class LoggerKeywordsPSO {
       
  
       
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/valuesForThisWordPSO", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/valuesForThisWordPSO", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

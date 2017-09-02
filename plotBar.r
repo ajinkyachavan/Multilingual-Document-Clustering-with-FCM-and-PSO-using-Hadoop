@@ -3,15 +3,15 @@
 
 args <- commandArgs(trailingOnly = TRUE)
 
-
+username <- Sys.info()[["user"]]
 
 value <- args[1]
 dirname <- args[2]
 
+pathName <- paste(c("/home/",username, "/workspace/NewsCluster/cluster_plots"),collapse="")
+link <- paste(c(pathName, dirname) , collapse="_")
 
-link <- paste(c("/home/deepa/workspace/NewsCluster/cluster_plots", dirname) , collapse="_")
-
-
+print(link)
 setwd(link)
 
 #print(paste(c( value," value"), collapse = "_"))

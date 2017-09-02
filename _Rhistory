@@ -1,0 +1,2 @@
+Sys.getenv()
+Sys.info()[["user"]]

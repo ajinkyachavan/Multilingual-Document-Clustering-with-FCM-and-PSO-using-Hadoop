@@ -1,6 +1,8 @@
+username <- Sys.info()[["user"]]
 
+pathName <- paste(c("/home/",username, "/workspace/NewsCluster/cluster_plots"),collapse="")
 
-setwd("/home/ajinkya/workspace2/NewsCluster6/")
+setwd(pathName)
 
 args <- commandArgs(trailingOnly = TRUE)
 

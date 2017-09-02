@@ -1,18 +1,19 @@
 import java.io.*;
 
 public class LoggerIter {
-	
+	 final String username = System.getProperty("user.name");
+
 	
 	public LoggerIter(){
 		
-//		(new File("/home/ajinkya/workspace/NewsCluster/cluster_plots_"+myfilename)).mkdirs();
+//		(new File("/home/"+username+"/workspace/NewsCluster/cluster_plots_"+myfilename)).mkdirs();
 
 		
     try{
-        BufferedReader  bf  = new BufferedReader(new FileReader("/home/deepa/workspace/NewsCluster/iter"));
+        BufferedReader  bf  = new BufferedReader(new FileReader("/home/"+username+"/workspace/NewsCluster/iter"));
    	 
    	 if(bf.readLine() != null){
-   		 PrintWriter writer1 = new PrintWriter("/home/deepa/workspace/NewsCluster/iter");
+   		 PrintWriter writer1 = new PrintWriter("/home/"+username+"/workspace/NewsCluster/iter");
    		 writer1.print("");
    		 writer1.close();
    	 }else{
@@ -30,14 +31,15 @@ public class LoggerIter {
       PrintWriter out = null;
       
  
-      
+ 	 final String username = System.getProperty("user.name");
+
       
       
       try {
     	  
     	
     	 
-		out = new PrintWriter(new FileWriter("/home/deepa/workspace/NewsCluster/iter", true), true);
+		out = new PrintWriter(new FileWriter("/home/"+username+"/workspace/NewsCluster/iter", true), true);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

@@ -16,6 +16,9 @@ import javax.swing.SwingUtilities;
 
 public class GUIMain2 extends JFrame {
 
+	 final String username = System.getProperty("user.name");
+
+	
 	static int x = 0;
 	static JFrame f[];
 	
@@ -31,7 +34,8 @@ public class GUIMain2 extends JFrame {
 		
 	//	System.out.println(args[0]);
 //		System.out.println(args[1]);
-		
+		 final String username = System.getProperty("user.name");
+
 
 		int n = Integer.parseInt(args[0]);
 		String docNum = args[1];
@@ -43,10 +47,10 @@ public class GUIMain2 extends JFrame {
 		
 		
 		
-		String inputWord = GUIMain.inputWord;
+		final String inputWord = GUIMain.inputWord;
 		
 		
-	String 	words[] = docNum.substring(1, docNum.length()-2).split(",");
+	final String 	words[] = docNum.substring(1, docNum.length()-2).split(",");
 		
 
 		JLabel label = new JLabel("Cluster 1 contains "+n+" values", SwingConstants.RIGHT);
@@ -59,7 +63,7 @@ public class GUIMain2 extends JFrame {
 				// TODO Auto-generated method stub
 	//			JDialog d= new JDialog(f, "woah "+n, true);
 				try {
-					Desktop.getDesktop().open(new File("/home/ajinkya/workspace2/NewsCluster/cluster_"+inputWord+"/"));
+					Desktop.getDesktop().open(new File("/home/"+username+"/workspace/NewsCluster/cluster_"+inputWord+"/"));
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -75,7 +79,7 @@ public class GUIMain2 extends JFrame {
 
 		JPanel panel2 = new JPanel();
 		for(int i=0;i<words.length;i++){
-	//		JButton btn = new JButton("<HTML><a href=\"/home/ajinkya/workspace2/NewsCluster3/cluster"+inputWord+"\" >"+n+"</a></HTML>");
+	//		JButton btn = new JButton("<HTML><a href=\"/home/"+username+"/workspace2/NewsCluster3/cluster"+inputWord+"\" >"+n+"</a></HTML>");
 			final int num = i;
 			JButton btn = new JButton("<HTML><FONT color=\"#009900\"><U>"+words[i]+"</U><FONT></HTML>");
 		
@@ -86,7 +90,7 @@ public class GUIMain2 extends JFrame {
 					// TODO Auto-generated method stub
 					//JDialog d= new JDialog(f, "woah "+n, true);
 					try {
-						Desktop.getDesktop().open(new File("/home/ajinkya/workspace2/NewsCluster/cleanData/cleanData"+Integer.parseInt(words[num].trim())+".txt"));
+						Desktop.getDesktop().open(new File("/home/"+username+"/workspace/NewsCluster/cleanData/cleanData"+Integer.parseInt(words[num].trim())+".txt"));
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

@@ -8,12 +8,17 @@ value2 <- args[2]
 m <- args[3]
 iter <- args[5]
 word <- args[4]
+username <- Sys.info()[["user"]]
 
 
+link <- paste(c("/home/",username, "/workspace/NewsCluster/"),collapse="")
 
-link <- paste(c("/home/deepa/workspace/NewsCluster/cluster_plots", word) , collapse="_")
+#print(pathName)
+#print(word)
 
+#link <- paste(c(pathName, word) , collapse="_")
 
+print(link)
 setwd(link)
 
 
@@ -44,9 +49,9 @@ plotData <- function(value1, value2, j, word2, iter){
   
   
   
-  mypath <- paste("/home/deepa/workspace/NewsCluster/cluster_plots",word,sep="_")
+  mypathName <- paste(pathName,word,sep="_")
   
-  setwd(mypath)
+  setwd(mypathName)
   
 
   name <- paste(c("plot", j,filename2,".pdf"), collapse = "_")
